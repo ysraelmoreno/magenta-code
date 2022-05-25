@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 class Magenta {
   constructor(codes) {
     this.codes = codes;
@@ -180,4 +183,10 @@ class Magenta {
   }
 }
 
-module.exports = Magenta;
+const codes = fs
+  .readFileSync(path.join(__dirname, "code.m"), "utf-8")
+  .toString();
+
+const magenta = new Magenta(codes);
+
+magenta.run();
